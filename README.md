@@ -1,4 +1,4 @@
-# knucklebones-for-pico8
+# Knucklebones for PICO-8
 ## Description
 This is a backup of a game developed for the Pico-8 Fantasy Console and does not include the corresponding sprites. It is currently a work-in-progress.
 ## Knucklebones

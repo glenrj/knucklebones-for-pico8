@@ -14,13 +14,13 @@ function init_selector()
 end
 
 function update_selector()
-	--updates to selector
+    --menu wrap
 	if selector.position > selector.options then
 		selector.position=1
 	elseif selector.position < 1 then
 		selector.position=selector.options
 	end
-
+    --roll mode positions
 	if selector.mode == "roll" then
 		xpos={8,8}
 		ypos={80,88}
@@ -40,7 +40,7 @@ function update_selector()
 			end
 		end
 	end
-		
+	--place mode positions
 	if selector.mode== "place" then
 		xpos=playergridx
 		ypos=playergridy
@@ -67,9 +67,9 @@ function update_selector()
 		
 	for i=1,selector.options do
 		if selector.position == i then
-				selector.x=xpos[i]
-				selector.y=ypos[i]
-			end
+			selector.x=xpos[i]
+			selector.y=ypos[i]
+		end
 	end
 end
 

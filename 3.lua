@@ -2,7 +2,7 @@
 function init_die()
 	die={
 		value=1
-		}
+	}
 	die.sprite=4
 end
 

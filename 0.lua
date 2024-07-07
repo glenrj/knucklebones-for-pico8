@@ -10,8 +10,8 @@ function _init()
 end
 
 function _update()
-	player.score=update_score(playergrid)
-	cpu.score=update_score(cpugrid)
+	scores.player=update_score(playergrid)
+	scores.cpu=update_score(cpugrid)
 	update_board()
 	update_die()
 	update_selector()

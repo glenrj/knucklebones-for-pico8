@@ -1,11 +1,9 @@
 --score
 function init_score()
-	player={
-		score=0
-	}
-	cpu={
-		score=0
-	}
+	scores={
+        player=0,
+        cpu=0
+    }
 end
 
 function update_score(grid)
@@ -22,22 +20,20 @@ function update_score(grid)
 end
 
 function draw_score()
-	print(cpu.score,116,46,7)
-	print(player.score,116,76,7)
+	print(scores.cpu,116,46,7)
+	print(scores.player,116,76,7)
 end
 
 function score_col(col)
 	colscore=0
-		for i=1,6 do
-			mult=count(col,i)
-			if mult >0 then
-				colscore=colscore+(i*mult)*mult
-			end
-			for i=1, mult do
-				del(column,i)
-			end
-		end
-		return colscore
+    for i=1,6 do
+        mult=count(col,i)
+        colscore=colscore+(i*mult)*mult
+        for i=1, mult do
+            del(column,i)
+        end
+    end
+	return colscore
 end
 
 function compare()
