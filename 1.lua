@@ -8,6 +8,7 @@ function init_board()
 	cpugrid={1,2,3,4,5,6,5,4,3}
 	playergrid={0,0,0,0,0,0,0,0,0}
 	remaining={true,true,true,true,true,true,true,true,true}
+    lastPlayed="cpu"
     --available x coordinates for selector
 	playergridx={}
 	playergridy={}
@@ -33,7 +34,7 @@ function init_board()
 end
 
 function update_board()
-	compare(playergrid,cpugrid)
+	compare()
 end
 
 function draw_board()
@@ -46,6 +47,7 @@ function draw_board()
 	--menu
 	print("roll",12,80,7)
 	print("restart",12,88,7)
+    print(lastPlayed)
 end
 
 function draw_grid(grid,x,y,space)
@@ -67,4 +69,41 @@ function draw_grid(grid,x,y,space)
 	spr(sprites[7],x,y+(space*2),square.w,square.h)
 	spr(sprites[8],x+space,y+(space*2),square.w,square.h)
 	spr(sprites[9],x+(space*2),y+(space*2),square.w,square.h)
+end
+
+function compare()
+	for i=1,3 do
+		pcol={playergrid[i],playergrid[i+3],playergrid[i+6]}
+		ccol={cpugrid[i],cpugrid[i+3],cpugrid[i+6]}
+            if count(pcol,die.value)>0 and count(ccol,die.value)>0 then
+                if lastPlayed == "cpu" then
+                    if pcol[1]==die.value then
+                        pcol[1]=0
+                    end
+                    if pcol[2]==die.value then
+                        pcol[2]=0
+                    end
+                    if pcol[3]==die.value then
+                        pcol[3]=0
+                    end
+                else
+                    if ccol[1]==die.value then
+                        ccol[1]=0
+                    end
+                    if ccol[2]==die.value then
+                        pcol[2]=0
+                    end
+                    if ccol[3]==die.value then
+                        ccol[3]=0
+                    end
+                end
+
+        end
+        playergrid[i]=pcol[1]
+        playergrid[i+3]=pcol[2]
+        playergrid[i+6]=pcol[3]
+        cpugrid[i]=ccol[1]
+        cpugrid[i+3]=ccol[2]
+        cpugrid[i+6]=ccol[3]
+    end
 end

@@ -57,11 +57,9 @@ function update_selector()
 			selector.position+=1
 		end
 		if btnp(4) then
+            lastPlayed="player"
 			playergrid[selector.position]=die.value
-			die.value=1
-			--roll mode just for testing
-			roll_mode()
-			--cpu_mode()
+			cpu_mode()
 		end
 	end
 		
