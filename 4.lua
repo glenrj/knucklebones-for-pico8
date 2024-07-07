@@ -24,10 +24,10 @@ function update_selector()
 	if selector.mode == "roll" then
 		xpos={8,8}
 		ypos={80,88}
-		if btnp(⬇️) then
+		if btnp(3) then
 			selector.position+=1
 		end
-		if btnp(⬆️) then
+		if btnp(2) then
 			selector.position-=1
 		end
 		if btnp(5) then
@@ -44,16 +44,16 @@ function update_selector()
 	if selector.mode== "place" then
 		xpos=playergridx
 		ypos=playergridy
-		if btnp(⬇️) then
+		if btnp(3) then
 			selector.position+=3
 		end
-		if btnp(⬆️) then
+		if btnp(2) then
 			selector.position-=3
 		end
-		if btnp(⬅️) then
+		if btnp(8) then
 			selector.position-=1
 		end
-		if btnp(➡️) then
+		if btnp(1) then
 			selector.position+=1
 		end
 		if btnp(4) then
