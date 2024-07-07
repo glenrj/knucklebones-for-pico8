@@ -37,8 +37,46 @@ function score_col(col)
 end
 
 function compare()
+    lastPlayed=""
+    if selector.mode == "roll" then
+        lastPlayed="player"
+    elseif selector.mode == "cpu" then
+        lastPlayed="cpu"
+    end
 	for i=1,3 do
 		pcol={playergrid[i],playergrid[i+3],playergrid[i+6]}
 		ccol={cpugrid[i],cpugrid[i+3],cpugrid[i+6]}
-	end
+        for x=1,6 do
+            if count(pcol,i)>0 and count(ccol,i)>0 then
+                if lastPlayed == "cpu" then
+                    if pcol[1]==x then
+                        pcol[1]=0
+                    end
+                    if pcol[2]==x then
+                        pcol[2]=0
+                    end
+                    if pcol[3]==x then
+                        pcol[3]=0
+                    end
+                elseif lastPlayed == "player" then
+                    if ccol[1]==x then
+                        ccol[1]=0
+                    end
+                    if ccol[2]==x then
+                        pcol[2]=0
+                    end
+                    if ccol[3]==x then
+                        ccol[3]=0
+                    end
+                end
+
+                playergrid[i]=pcol[1]
+                playergrid[i+3]=pcol[2]
+                playergrid[i+6]=pcol[3]
+                cpugrid[i]=ccol[1]
+                cpugrid[i+3]=ccol[2]
+                cpugrid[i+6]=ccol[3]
+            end
+        end
+    end
 end
