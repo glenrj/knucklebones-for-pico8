@@ -91,7 +91,7 @@ function compare()
                         ccol[1]=0
                     end
                     if ccol[2]==die.value then
-                        pcol[2]=0
+                        ccol[2]=0
                     end
                     if ccol[3]==die.value then
                         ccol[3]=0

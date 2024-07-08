@@ -2,8 +2,8 @@
 function init_die()
 	die={
 		value=1
+		sprite=4
 	}
-	die.sprite=4
 end
 
 function update_die()
