@@ -7,7 +7,7 @@ function init_board()
 	}
 	cpugrid={1,2,3,4,5,6,5,4,3}
 	playergrid={0,0,0,0,0,0,0,0,0}
-	remaining={true,true,true,true,true,true,true,true,true}
+	--remaining={true,true,true,true,true,true,true,true,true}
     lastPlayed="cpu"
     --available x coordinates for selector
 	playergridx={}
@@ -86,7 +86,7 @@ function compare()
                     if pcol[3]==die.value then
                         pcol[3]=0
                     end
-                else
+                elseif lastplayed == "player" then
                     if ccol[1]==die.value then
                         ccol[1]=0
                     end

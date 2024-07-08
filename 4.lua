@@ -50,7 +50,7 @@ function update_selector()
 		if btnp(2) then
 			selector.position-=3
 		end
-		if btnp(8) then
+		if btnp(0) then
 			selector.position-=1
 		end
 		if btnp(1) then
@@ -87,7 +87,7 @@ function roll_mode()
 	selector.h=1
 	selector.sprite=32
 	selector.position=1
-	options=2
+	selector.options=2
 end
 
 function place_mode()
