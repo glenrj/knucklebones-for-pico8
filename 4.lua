@@ -103,3 +103,11 @@ function cpu_mode()
 	selector.visible=false
 	selector.mode="cpu"
 end
+
+function hide_selector()
+	selector.visible=false
+end
+
+function show_selector()
+	selector.visible=true
+end
