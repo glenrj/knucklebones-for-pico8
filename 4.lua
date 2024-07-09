@@ -59,7 +59,9 @@ function update_selector()
 		if btnp(4) then
             lastPlayed="player"
 			playergrid[selector.position]=die.value
+			compare_grids()
 			cpu_mode()
+			cpu_turn()
 		end
 	end
 		

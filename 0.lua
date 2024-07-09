@@ -12,7 +12,6 @@ end
 function _update()
 	scores.player=update_score(playergrid)
 	scores.cpu=update_score(cpugrid)
-	update_board()
 	update_die()
 	update_selector()
 end

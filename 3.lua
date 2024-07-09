@@ -19,6 +19,7 @@ function update_die()
 	if die.timer>=20 then
 		die.rolling=false
 		die.timer=1
+		die.value=flr(rnd(6)) + 1
 		if selector.mode == "place" then
 			show_selector()
 		end
@@ -33,4 +34,6 @@ function roll_die()
 	hide_selector()
 	die.timer=0
 	die.rolling=true
+	die.value=flr(rnd(6)) + 1
+
 end

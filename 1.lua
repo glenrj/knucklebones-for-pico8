@@ -5,8 +5,8 @@ function init_board()
 		h=2,
 		space=18
 	}
-	cpugrid={1,2,3,4,5,6,5,4,3}
-	playergrid={0,0,0,0,0,0,0,0,0}
+	cpugrid={0,1,2,3,0,4,5,6,0}
+	playergrid={1,2,3,4,5,6,0,0,0}
 	--remaining={true,true,true,true,true,true,true,true,true}
     lastPlayed="cpu"
     --available x coordinates for selector
@@ -31,10 +31,6 @@ function init_board()
 	add(playergridy,70+(square.space*2))
 	add(playergridy,70+(square.space*2))
 	add(playergridy,70+(square.space*2))
-end
-
-function update_board()
-	compare()
 end
 
 function draw_board()
@@ -70,7 +66,7 @@ function draw_grid(grid,x,y,space)
 	spr(sprites[9],x+(space*2),y+(space*2),square.w,square.h)
 end
 
-function compare()
+function compare_grids()
 	for i=1,3 do
 		pcol={playergrid[i],playergrid[i+3],playergrid[i+6]}
 		ccol={cpugrid[i],cpugrid[i+3],cpugrid[i+6]}
