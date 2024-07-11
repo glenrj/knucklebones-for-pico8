@@ -7,6 +7,7 @@ function _init()
 	init_score()
 	init_die()
 	init_selector()
+	init_cpu()
 end
 
 function _update()
@@ -14,6 +15,7 @@ function _update()
 	scores.cpu=update_score(cpugrid)
 	update_die()
 	update_selector()
+	update_cpu()
 end
 
 function _draw()
@@ -22,4 +24,5 @@ function _draw()
 	draw_score()
 	draw_die()
 	draw_selector()
+	draw_cpu()
 end

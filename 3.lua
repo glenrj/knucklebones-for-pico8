@@ -35,5 +35,4 @@ function roll_die()
 	die.timer=0
 	die.rolling=true
 	die.value=flr(rnd(6)) + 1
-
 end
