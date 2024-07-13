@@ -46,8 +46,21 @@ function place_die(roll)
             --sort column by column
             pcol={playergrid[i],playergrid[i+3],playergrid[i+6]}
             ccol={cpugrid[i],cpugrid[i+3],cpugrid[i+6]}
-            if count(pcol,cpu.roll)>0 and count(ccol,0)>0 then
+            if count(ccol,cpu.roll)>0 and count(ccol,0)>0 then
+                --if it's not in player column but it is in the cpu column AND it has room
+                --detecting correctly
+                --placing correctly
+                route="cpu match"
+                zeroindex=findzeros(ccol)
+                ccol[zeroindex[1]]=cpu.roll
+                --update the board
+                cpugrid[i]=ccol[1]
+                cpugrid[i+3]=ccol[2]
+                cpugrid[i+6]=ccol[3]
+                cpu.turn=false
+            elseif count(pcol,cpu.roll)>0 and count(ccol,0)>0 then
                 --if there is a matching die in the player column and an open spot in ccol
+                --detecting correctly
                 --not placing at all once detected
                 route="player match"
                 zeroindex=findzeros(ccol)
@@ -57,20 +70,10 @@ function place_die(roll)
                 cpugrid[i+3]=ccol[2]
                 cpugrid[i+6]=ccol[3]
                 cpu.turn=false
-            elseif count(ccol,cpu.roll)>0 and count(ccol,0)>0 then
-                --if it's not in player column but it is in the cpu column AND it has room
-                --appears to be working correctly
-                route="cpu match"
-                zeroindex=findzeros(ccol)
-                ccol[zeroindex[1]]=cpu.roll
-                --update the board
-                cpugrid[i]=ccol[1]
-                cpugrid[i+3]=ccol[2]
-                cpugrid[i+6]=ccol[3]
-                cpu.turn=false
             elseif cpu.turn == true and i==3 then
                 --no matches
-                --appears to be working correctly
+                --detecting correctly
+                --placing correctly
                 route="no match"
                 --place cpu.roll in a random empty spot (0) in cpugrid
                 zeroindex=findzeros(cpugrid)
@@ -79,7 +82,6 @@ function place_die(roll)
                     zero=1
                 end
                 randomindex=zeroindex[zero]
-                -- ccol[randomindex]=cpu.roll
                 --update the board
                 cpugrid[i]=ccol[1]
                 cpugrid[i+3]=ccol[2]
@@ -93,19 +95,19 @@ function place_die(roll)
     roll_mode()
 end
 
-function found(table, value)
-    for i=1,#table do 
-        if table[i] == value then
+function found(t, value)
+    for i=1,#t do 
+        if t[i] == value then
             return true
         end
     end
     return false
 end
 
-function findzeros(table)
+function findzeros(t)
     zeroindex={}
-    for i=1,#table do
-        if table[i] == 0 then
+    for i=1,#t do
+        if t[i] == 0 then
             add(zeroindex,i)
         end
     end
