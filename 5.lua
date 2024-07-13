@@ -35,28 +35,23 @@ end
 function place_die(roll)
     cpu.roll=roll
     cpu.turn=true
-
-    -- 1. is there a match\
+    -- 1. is there a match
     --      a. where is the match
     --      b. place in corraponding column
     -- 2. if there is no match 
     --      a. Find zeros 
     --      b. place in a zero 
-
-
     while cpu.turn do
         for i=1,3 do
             --sort column by column
             pcol={playergrid[i],playergrid[i+3],playergrid[i+6]}
             ccol={cpugrid[i],cpugrid[i+3],cpugrid[i+6]}
-            if count(pcol,cpu.roll)>0 and count(ccol,0)>0 then 
+            if count(pcol,cpu.roll)>0 and count(ccol,0)>0 then
                 --if there is a matching die in the player column and an open spot in ccol
-                --not consistently being detected
                 --not placing at all once detected
                 route="player match"
                 zeroindex=findzeros(ccol)
-                open=zeroindex[1]
-                ccol[open]=cpu.roll
+                ccol[zeroindex[1]]=cpu.roll
                 --update the board
                 cpugrid[i]=ccol[1]
                 cpugrid[i+3]=ccol[2]
@@ -73,7 +68,7 @@ function place_die(roll)
                 cpugrid[i+3]=ccol[2]
                 cpugrid[i+6]=ccol[3]
                 cpu.turn=false
-            else if cpu.turn == true and i==3 then
+            elseif cpu.turn == true and i==3 then
                 --no matches
                 --appears to be working correctly
                 route="no match"
@@ -83,7 +78,6 @@ function place_die(roll)
                 if zero == 0 then
                     zero=1
                 end
-            
                 randomindex=zeroindex[zero]
                 -- ccol[randomindex]=cpu.roll
                 --update the board
@@ -92,7 +86,6 @@ function place_die(roll)
                 cpugrid[i+6]=ccol[3]
                 cpugrid[randomindex]=roll
                 cpu.turn=false
-            end
             end
         end
     end
