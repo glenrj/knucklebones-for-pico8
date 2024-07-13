@@ -2,7 +2,9 @@
 function init_cpu()
     cpu={
         timer=1,
-        move=false
+        move=false,
+        roll=1,
+        turn=false
     }
     route="none"
 end
@@ -31,57 +33,85 @@ function cpu_turn()
 end
 
 function place_die(roll)
-    newval=roll
-    for i=1,3 do
-        --sort column by column
-        pcol={playergrid[i],playergrid[i+3],playergrid[i+6]}
-        ccol={cpugrid[i],cpugrid[i+3],cpugrid[i+6]}
-        isFound=found(pcol, newval)
-        if isFound and count(ccol,0)>0 then 
-            --if there is a matching die in the player column and an open spot in ccol
-            route="player match"
-            zeroindex=findzeros(ccol)
-            ccol[zeroindex[1]]=newval
-            newval=0
-        elseif count(ccol,newval)>0 and count(ccol,0)>0 then
-            --if it's not in player column but it is in the cpu column AND it has room
-            route="cpu match"
-            zeroindex=findzeros(ccol)
-            ccol[zeroindex[1]]=newval
-            newval=0
-        else
-            --no matches
-            route="no match"
-            --place newval in a random empty spot (0) in cpugrid
-            zeroindex=findzeros(cpugrid)
-            zero=flr(rnd(#zeroindex))
-            randomindex=zeroindex[zero]
-            ccol[randomindex]=newval
-            newval=0
+    cpu.roll=roll
+    cpu.turn=true
+
+    -- 1. is there a match\
+    --      a. where is the match
+    --      b. place in corraponding column
+    -- 2. if there is no match 
+    --      a. Find zeros 
+    --      b. place in a zero 
+
+
+    while cpu.turn do
+        for i=1,3 do
+            --sort column by column
+            pcol={playergrid[i],playergrid[i+3],playergrid[i+6]}
+            ccol={cpugrid[i],cpugrid[i+3],cpugrid[i+6]}
+            if count(pcol,cpu.roll)>0 and count(ccol,0)>0 then 
+                --if there is a matching die in the player column and an open spot in ccol
+                --not consistently being detected
+                --not consistently placing once detected
+                route="player match"
+                zeroindex=findzeros(ccol)
+                open=zeroindex[1]
+                ccol[open]=cpu.roll
+                --update the board
+                cpugrid[i]=ccol[1]
+                cpugrid[i+3]=ccol[2]
+                cpugrid[i+6]=ccol[3]
+                cpu.turn=false
+            elseif count(ccol,cpu.roll)>0 and count(ccol,0)>0 then
+                --if it's not in player column but it is in the cpu column AND it has room
+                --not consistently being detected
+                route="cpu match"
+                zeroindex=findzeros(ccol)
+                ccol[zeroindex[1]]=cpu.roll
+                --update the board
+                cpugrid[i]=ccol[1]
+                cpugrid[i+3]=ccol[2]
+                cpugrid[i+6]=ccol[3]
+                cpu.turn=false
+            else if cpu.turn == true and i==3 then
+                --no matches
+                route="no match"
+                --place cpu.roll in a random empty spot (0) in cpugrid
+                zeroindex=findzeros(cpugrid)
+                zero=flr(rnd(#zeroindex))
+                if zero == 0 then
+                    zero=1
+                end
+            
+                randomindex=zeroindex[zero]
+                -- ccol[randomindex]=cpu.roll
+                --update the board
+                cpugrid[i]=ccol[1]
+                cpugrid[i+3]=ccol[2]
+                cpugrid[i+6]=ccol[3]
+                cpugrid[randomindex]=roll
+                cpu.turn=false
+            end
+            end
         end
-        --update the board
-        cpugrid[i]=ccol[1]
-        cpugrid[i+3]=ccol[2]
-        cpugrid[i+6]=ccol[3]
     end
     compare_grids()
     roll_mode()
-    selector.visible=true
 end
 
-function found(array, value)
-    for i=1,#array do 
-        if array[i] == value then
+function found(table, value)
+    for i=1,#table do 
+        if table[i] == value then
             return true
         end
     end
     return false
 end
 
-function findzeros(array)
+function findzeros(table)
     zeroindex={}
-    for i=1,#array do
-        if array[i] == 0 then
+    for i=1,#table do
+        if table[i] == 0 then
             add(zeroindex,i)
         end
     end

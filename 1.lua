@@ -5,8 +5,8 @@ function init_board()
 		h=2,
 		space=18
 	}
-	cpugrid={0,1,2,3,0,4,5,6,0}
-	playergrid={1,2,3,4,5,6,0,0,0}
+	cpugrid={0,0,0,0,0,0,0,0,0}
+	playergrid={0,0,0,0,0,0,0,0,0}
 	--remaining={true,true,true,true,true,true,true,true,true}
     lastPlayed="cpu"
     --available x coordinates for selector
@@ -100,5 +100,8 @@ function compare_grids()
         cpugrid[i]=ccol[1]
         cpugrid[i+3]=ccol[2]
         cpugrid[i+6]=ccol[3]
+		if count(playergrid,0)==0 or count(cpugrid,0)==0 then
+			--change game state to over
+		end
     end
 end

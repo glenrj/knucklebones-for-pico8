@@ -90,9 +90,11 @@ function roll_mode()
 	selector.sprite=32
 	selector.position=1
 	selector.options=2
+	selector.visible=true
 end
 
 function place_mode()
+	route="none"
 	selector.mode="place"
 	selector.w=2
 	selector.h=2
