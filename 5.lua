@@ -52,7 +52,7 @@ function place_die(roll)
             if count(pcol,cpu.roll)>0 and count(ccol,0)>0 then 
                 --if there is a matching die in the player column and an open spot in ccol
                 --not consistently being detected
-                --not consistently placing once detected
+                --not placing at all once detected
                 route="player match"
                 zeroindex=findzeros(ccol)
                 open=zeroindex[1]
@@ -64,7 +64,7 @@ function place_die(roll)
                 cpu.turn=false
             elseif count(ccol,cpu.roll)>0 and count(ccol,0)>0 then
                 --if it's not in player column but it is in the cpu column AND it has room
-                --not consistently being detected
+                --appears to be working correctly
                 route="cpu match"
                 zeroindex=findzeros(ccol)
                 ccol[zeroindex[1]]=cpu.roll
@@ -75,6 +75,7 @@ function place_die(roll)
                 cpu.turn=false
             else if cpu.turn == true and i==3 then
                 --no matches
+                --appears to be working correctly
                 route="no match"
                 --place cpu.roll in a random empty spot (0) in cpugrid
                 zeroindex=findzeros(cpugrid)
