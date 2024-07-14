@@ -6,9 +6,15 @@ function init_board()
 		space=18
 	}
 	cpugrid={0,0,0,0,0,0,0,0,0}
+	ccol1={}
+	ccol2={}
+	ccol3={}
 	playergrid={0,0,0,0,0,0,0,0,0}
+	pcol1={}
+	pcol2={}
+	pcol3={}
 	--remaining={true,true,true,true,true,true,true,true,true}
-    lastPlayed="cpu"
+    lastPlayed="player"
     --available x coordinates for selector
 	playergridx={}
 	playergridy={}
@@ -43,6 +49,7 @@ function draw_board()
 	--menu
 	print("roll",12,80,7)
 	print("restart",12,88,7)
+	print(lastPlayed)
 end
 
 function draw_grid(grid,x,y,space)
@@ -67,41 +74,84 @@ function draw_grid(grid,x,y,space)
 end
 
 function compare_grids()
-	for i=1,3 do
-		pcol={playergrid[i],playergrid[i+3],playergrid[i+6]}
-		ccol={cpugrid[i],cpugrid[i+3],cpugrid[i+6]}
-            if count(pcol,die.value)>0 and count(ccol,die.value)>0 then
-                if lastPlayed == "cpu" then
-                    if pcol[1]==die.value then
-                        pcol[1]=0
-                    end
-                    if pcol[2]==die.value then
-                        pcol[2]=0
-                    end
-                    if pcol[3]==die.value then
-                        pcol[3]=0
-                    end
-                elseif lastplayed == "player" then
-                    if ccol[1]==die.value then
-                        ccol[1]=0
-                    end
-                    if ccol[2]==die.value then
-                        ccol[2]=0
-                    end
-                    if ccol[3]==die.value then
-                        ccol[3]=0
-                    end
-                end
-
-        end
-        playergrid[i]=pcol[1]
-        playergrid[i+3]=pcol[2]
-        playergrid[i+6]=pcol[3]
-        cpugrid[i]=ccol[1]
-        cpugrid[i+3]=ccol[2]
-        cpugrid[i+6]=ccol[3]
-		if count(playergrid,0)==0 or count(cpugrid,0)==0 then
-			--change game state to over
+	to_col()
+	if lastPlayed == "cpu" then
+		for i=1,6 do
+			if count(pcol1,i)>0 and count(ccol1,i)>0 then
+				matches=find_match(pcol1,i)
+				for i=1,#matches do
+					pcol1[matches[i]]=0
+				end
+			end
+			if count(pcol2,i)>0 and count(ccol2,i)>0 then
+				matches=find_match(pcol2,i)
+				for i=1,#matches do
+					pcol2[matches[i]]=0
+				end
+			end
+			if count(pcol3,i)>0 and count(ccol3,i)>0 then
+				matches=find_match(pcol3,i)
+				for i=1,#matches do
+					pcol3[matches[i]]=0
+				end
+			end
 		end
-    end
+	end
+	if lastPlayed == "player" then
+		for i=1,6 do
+			if count(pcol1,i)>0 and count(ccol1,i)>0 then
+				matches=find_match(ccol1,i)
+				for i=1,#matches do
+					ccol1[matches[i]]=0
+				end
+			end
+			if count(pcol2,i)>0 and count(ccol2,i)>0 then
+				matches=find_match(ccol2,i)
+				for i=1,#matches do
+					ccol2[matches[i]]=0
+				end
+			end
+			if count(pcol3,i)>0 and count(ccol3,i)>0 then
+				matches=find_match(ccol3,i)
+				for i=1,#matches do
+					ccol3[matches[i]]=0
+				end
+			end
+		end
+	end
+	to_grid()
+	if count(playergrid,0)==0 or count(cpugrid,0)==0 then
+		--TODO
+		--change game state to over
+	end
+end
+
+function to_col()
+	ccol1={cpugrid[1],cpugrid[4],cpugrid[7]}
+	ccol2={cpugrid[2],cpugrid[5],cpugrid[8]}
+	ccol3={cpugrid[3],cpugrid[6],cpugrid[9]}
+	pcol1={playergrid[1],playergrid[4],playergrid[7]}
+	pcol2={playergrid[2],playergrid[5],playergrid[8]}
+	pcol3={playergrid[3],playergrid[6],playergrid[9]}
+end
+
+function to_grid()
+	playergrid[1]=pcol1[1]
+	playergrid[2]=pcol2[1]
+	playergrid[3]=pcol3[1]
+	playergrid[4]=pcol1[2]
+	playergrid[5]=pcol2[2]
+	playergrid[6]=pcol3[2]
+	playergrid[7]=pcol1[3]
+	playergrid[8]=pcol2[3]
+	playergrid[9]=pcol3[3]
+	cpugrid[1]=ccol1[1]
+	cpugrid[2]=ccol2[1]
+	cpugrid[3]=ccol3[1]
+	cpugrid[4]=ccol1[2]
+	cpugrid[5]=ccol2[2]
+	cpugrid[6]=ccol3[2]
+	cpugrid[7]=ccol1[3]
+	cpugrid[8]=ccol2[3]
+	cpugrid[9]=ccol3[3]
 end
