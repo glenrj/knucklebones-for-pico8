@@ -6,10 +6,10 @@ function init_selector()
 		h=1,
 		x=40,
 		y=80,
-		mode="roll",
+		mode="title",
 		position=1,
-		options=2,
-		visible=true
+		options=0,
+		visible=false
 	}
 end
 
@@ -30,14 +30,22 @@ function update_selector()
 		if btnp(2) then
 			selector.position-=1
 		end
-		if btnp(5) then
+		if btnp(4) then
 			if selector.position == 1 then
 				roll_die()
 				place_mode()
 			elseif selector.position == 2 then
+				title_mode()
 				cpugrid={0,0,0,0,0,0,0,0,0}
 				playergrid={0,0,0,0,0,0,0,0,0}
 			end
+		end
+	end
+	--title screen positions
+	if selector.mode == "title" then
+		if btnp(5) then
+			state="game"
+			roll_mode()
 		end
 	end
 	--place mode positions
@@ -56,7 +64,7 @@ function update_selector()
 		if btnp(1) then
 			selector.position+=1
 		end
-		if btnp(4) then
+		if btnp(5) then
             lastPlayed="player"
 			playergrid[selector.position]=die.value
 			compare_grids()
@@ -77,8 +85,6 @@ function draw_selector()
 	if selector.visible then
 		spr(selector.sprite,selector.x,selector.y,selector.w,selector.h)
 	end
-	print("mode:",0,0)
-	print(selector.mode)
 end
 
 function roll_mode()
@@ -91,6 +97,8 @@ function roll_mode()
 	selector.position=1
 	selector.options=2
 	selector.visible=true
+	xpos={8,8}
+	ypos={80,88}
 end
 
 function place_mode()
@@ -101,6 +109,13 @@ function place_mode()
 	selector.sprite=0
 	selector.position=1
 	selector.options=9
+end
+
+function title_mode()
+	state="title"
+	selector.mode="title"
+	selector.options=0
+	selector.visible=false
 end
 
 function cpu_mode()

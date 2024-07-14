@@ -8,5 +8,5 @@ Each player has a 3x3 grid, organized into three columns. They take turns rollin
 Each column is calculated separately, then added to the player's total score. If there are matching dice in the column, their values are added together and multiplied by the amount of matching dice.
 ### PICO-8 Controls
 ⬅️⬆️➡️⬇️ Move cursor
-❎ Select option from menu
-🅾️ Place die on grid
+🅾️ Select option from menu
+❎ Place die on grid

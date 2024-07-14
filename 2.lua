@@ -14,7 +14,6 @@ function update_score(grid)
 	score=0
 	for i=1,3 do
 		score+=score_col(columns[i])
-		print(score)
 	end
 	return score
 end

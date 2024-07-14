@@ -24,7 +24,7 @@ function update_cpu()
 end
 
 function draw_cpu()
-    print(route)
+    print(route,0,0)
 end
 
 function cpu_turn()
