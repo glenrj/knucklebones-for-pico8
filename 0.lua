@@ -3,7 +3,9 @@
 
 --game loop
 function _init()
-	state="title"
+	game={
+		state="title"
+	}
 	init_board()
 	init_score()
 	init_die()
@@ -22,13 +24,12 @@ end
 
 function _draw()
 	cls()
-	if state == "game" then
+	if game.state == "game" then
 		draw_board()
 		draw_score()
 		draw_die()
 		draw_selector()
-		draw_cpu()
-	elseif state == "title" then
+	elseif game.state == "title" then
 		draw_title()
 	end
 end

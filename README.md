@@ -9,3 +9,16 @@ Each column is calculated separately, then added to the player's total score. If
 ### PICO-8 Controls
 ⬅️⬆️➡️⬇️ Move cursor
 ❎ Select
+## Goals
+- [x] MVP
+- [ ] Add SFX
+- [ ] Add Music
+- [ ] Select column instead of grid spot
+- [ ] Stop player from selecting full column
+- [ ] Add rules to game
+- [ ] Redo main layout
+## Stretch Goals
+- [ ] Fake08 compatibility
+- [ ] local High Score leaderboard
+- [ ] change dice colour for multiples
+- [ ] Pass and Play

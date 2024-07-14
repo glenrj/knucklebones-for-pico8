@@ -43,7 +43,7 @@ function update_selector()
 	elseif selector.mode == "title" then
 		--title screen positions
 		if btnp(5) then
-			state="game"
+			game.state="game"
 			roll_mode()
 		end
 	elseif selector.mode== "place" then
@@ -110,7 +110,7 @@ function place_mode()
 end
 
 function title_mode()
-	state="title"
+	game.state="title"
 	selector.mode="title"
 	selector.options=0
 	selector.visible=false

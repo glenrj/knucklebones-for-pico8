@@ -26,11 +26,6 @@ function update_cpu()
     end
 end
 
-function draw_cpu()
-    print(route,0,0)
-    print(column)
-end
-
 function cpu_turn()
     roll_die()
     cpu.move=true
@@ -112,15 +107,6 @@ function place_die(roll)
     lastPlayed="cpu"
     compare_grids()
     roll_mode()
-end
-
-function found(t, value)
-    for i=1,#t do 
-        if t[i] == value then
-            return true
-        end
-    end
-    return false
 end
 
 function find_match(t,v)

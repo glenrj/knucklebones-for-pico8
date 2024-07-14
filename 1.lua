@@ -49,7 +49,6 @@ function draw_board()
 	--menu
 	print("roll",12,80,7)
 	print("restart",12,88,7)
-	print(lastPlayed)
 end
 
 function draw_grid(grid,x,y,space)
@@ -122,7 +121,7 @@ function compare_grids()
 	to_grid()
 	if count(playergrid,0)==0 or count(cpugrid,0)==0 then
 		--TODO
-		--change game state to over
+		--change game.state to over
 	end
 end
 
