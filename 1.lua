@@ -43,8 +43,6 @@ function draw_board()
 	--menu
 	print("roll",12,80,7)
 	print("restart",12,88,7)
-	print("❎ select",4,36,9)
-	print("🅾️ place die")
 end
 
 function draw_grid(grid,x,y,space)

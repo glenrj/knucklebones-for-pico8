@@ -46,19 +46,9 @@ function place_die(roll)
             --sort column by column
             pcol={playergrid[i],playergrid[i+3],playergrid[i+6]}
             ccol={cpugrid[i],cpugrid[i+3],cpugrid[i+6]}
-            if count(ccol,cpu.roll)>0 and count(ccol,0)>0 then
+            if count(ccol,cpu.roll)>0 and count(ccol,0)>0
                 --if it's not in player column but it is in the cpu column AND it has room
-                --detecting correctly
-                --placing correctly
-                route="cpu match"
-                zeroindex=findzeros(ccol)
-                ccol[zeroindex[1]]=cpu.roll
-                --update the board
-                cpugrid[i]=ccol[1]
-                cpugrid[i+3]=ccol[2]
-                cpugrid[i+6]=ccol[3]
-                cpu.turn=false
-            elseif count(pcol,cpu.roll)>0 and count(ccol,0)>0 then
+            or count(pcol,cpu.roll)>0 and count(ccol,0)>0 then
                 --if there is a matching die in the player column and an open spot in ccol
                 --detecting correctly
                 --not placing at all once detected

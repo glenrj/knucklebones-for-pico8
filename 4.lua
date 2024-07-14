@@ -20,8 +20,8 @@ function update_selector()
 	elseif selector.position < 1 then
 		selector.position=selector.options
 	end
-    --roll mode positions
 	if selector.mode == "roll" then
+		--roll mode positions
 		xpos={8,8}
 		ypos={80,88}
 		if btnp(3) then
@@ -30,7 +30,7 @@ function update_selector()
 		if btnp(2) then
 			selector.position-=1
 		end
-		if btnp(4) then
+		if btnp(5) then
 			if selector.position == 1 then
 				roll_die()
 				place_mode()
@@ -40,16 +40,14 @@ function update_selector()
 				playergrid={0,0,0,0,0,0,0,0,0}
 			end
 		end
-	end
-	--title screen positions
-	if selector.mode == "title" then
+	elseif selector.mode == "title" then
+		--title screen positions
 		if btnp(5) then
 			state="game"
 			roll_mode()
 		end
-	end
-	--place mode positions
-	if selector.mode== "place" then
+	elseif selector.mode== "place" then
+		--place mode positions
 		xpos=playergridx
 		ypos=playergridy
 		if btnp(3) then
