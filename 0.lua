@@ -4,7 +4,8 @@
 --game loop
 function _init()
 	game={
-		state="title"
+		state="title",
+		winner=false
 	}
 	init_board()
 	init_score()

@@ -125,9 +125,9 @@ function compare_grids()
 		selector.position=1
 		selector.mode="title"
 		if scores.player > scores.cpu then
-			gameover.winner=true
+			game.winner=true
 		else
-			gameover.winner=false
+			game.winner=false
 		end
 	end
 end

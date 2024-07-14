@@ -43,9 +43,10 @@ function update_selector()
 	elseif selector.mode == "title" then
 		--title/game over screen positions
 		if btnp(5) then
-			game.state="game"
 			cpugrid={0,0,0,0,0,0,0,0,0}
 			playergrid={0,0,0,0,0,0,0,0,0}
+			game.state="game"
+			game.winner=false
 			roll_mode()
 		end
 	elseif selector.mode== "place" then
