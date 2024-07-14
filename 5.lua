@@ -6,8 +6,6 @@ function init_cpu()
         roll=1,
         turn=false
     }
-    route="none"
-    column=0
 end
 
 function update_cpu()
@@ -106,7 +104,11 @@ function place_die(roll)
     to_grid()
     lastPlayed="cpu"
     compare_grids()
-    roll_mode()
+    if game.mode=="title" then
+        return
+    else
+        roll_mode()
+    end
 end
 
 function find_match(t,v)

@@ -13,9 +13,9 @@ function init_board()
 	pcol1={}
 	pcol2={}
 	pcol3={}
-	--remaining={true,true,true,true,true,true,true,true,true}
     lastPlayed="player"
     --available x coordinates for selector
+	--TODO hard code/collapse
 	playergridx={}
 	playergridy={}
 	add(playergridx,56)
@@ -120,10 +120,10 @@ function compare_grids()
 	end
 	to_grid()
 	if count(playergrid,0)==0 or count(cpugrid,0)==0 then
-		game.state="over"
 		selector.visible=false
 		selector.position=1
 		selector.mode="title"
+		game.state="over"
 		if scores.player > scores.cpu then
 			game.winner=true
 		else

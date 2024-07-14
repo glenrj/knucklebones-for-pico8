@@ -11,15 +11,15 @@ Each column is calculated separately, then added to the player's total score. If
 ❎ Select
 ## Goals
 - [x] MVP
-- [ ] Game over screen
+- [x] Game over screen
 - [ ] Select column instead of grid spot
 - [ ] Stop player from selecting full column
 - [ ] Add SFX
-- [ ] Add Music
-- [ ] Add rules to game
 - [ ] Redo main layout
-### Stretch Goals
+- [ ] Add rules to game
+- [ ] Change dice colour for multiples
 - [ ] Fake08 compatibility
-- [ ] local High Score leaderboard
-- [ ] change dice colour for multiples
+### Stretch Goals
+- [ ] High Score leaderboard
 - [ ] Pass and Play
+- [ ] Music

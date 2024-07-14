@@ -38,15 +38,18 @@ function update_selector()
 				title_mode()
 				cpugrid={0,0,0,0,0,0,0,0,0}
 				playergrid={0,0,0,0,0,0,0,0,0}
+				game.winner=false
 			end
 		end
 	elseif selector.mode == "title" then
+		xpos={0}
+		ypos={0}
 		--title/game over screen positions
 		if btnp(5) then
 			cpugrid={0,0,0,0,0,0,0,0,0}
 			playergrid={0,0,0,0,0,0,0,0,0}
-			game.state="game"
 			game.winner=false
+			game.state="game"
 			roll_mode()
 		end
 	elseif selector.mode== "place" then
@@ -69,8 +72,10 @@ function update_selector()
             lastPlayed="player"
 			playergrid[selector.position]=die.value
 			compare_grids()
-			cpu_mode()
-			cpu_turn()
+			if game.state == "game" then
+				cpu_mode()
+				cpu_turn()
+			end
 		end
 	end
 		
