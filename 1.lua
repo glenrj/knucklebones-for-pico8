@@ -120,8 +120,15 @@ function compare_grids()
 	end
 	to_grid()
 	if count(playergrid,0)==0 or count(cpugrid,0)==0 then
-		--TODO
-		--change game.state to over
+		game.state="over"
+		selector.visible=false
+		selector.position=1
+		selector.mode="title"
+		if scores.player > scores.cpu then
+			gameover.winner=true
+		else
+			gameover.winner=false
+		end
 	end
 end
 

@@ -81,22 +81,22 @@ function place_die(roll)
         --random 0 in cpugrid
         route="no match"
         open_spots=find_match(cpugrid,0)
-        spot=flr(rnd(#open_spots))
-        if spot == 0 then
-            spot=1
+        random=rnd(#open_spots)
+        if random == 0 then
+            random=1
         end
         --first open spot in respective column
-        if spot > 4 then
+        if random <4 and count(ccol1,0)>0 then
             zeroes=find_match(ccol1,0)
             ccol1[zeroes[1]]=cpu.roll
             cpu.turn=false
             column=1
-        elseif spot > 7 then
+        elseif random <7 and count(ccol2,0)>0 then
             zeroes=find_match(ccol2,0)
             ccol2[zeroes[1]]=cpu.roll
             cpu.turn=false
             column=2
-        else
+        elseif random <10 and count(ccol3,0)>0 then
             zeroes=find_match(ccol3,0)
             ccol3[zeroes[1]]=cpu.roll
             cpu.turn=false
