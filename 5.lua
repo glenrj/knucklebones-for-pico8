@@ -16,7 +16,7 @@ function update_cpu()
 		    die.timer=1
             die.value=flr(rnd(6)) + 1
         end
-        if cpu.timer>=25 then
+        if cpu.timer>=28 then
             cpu.move=false
             cpu.timer=0
             place_die(die.value)

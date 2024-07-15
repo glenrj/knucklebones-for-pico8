@@ -30,7 +30,7 @@ function update_selector()
 		if btnp(2) then
 			selector.position-=1
 		end
-		if btnp(5) then
+		if btnp(5) or btnp(4) then
 			if selector.position == 1 then
 				roll_die()
 				place_mode()
@@ -68,7 +68,7 @@ function update_selector()
 		if btnp(1) then
 			selector.position+=1
 		end
-		if btnp(5) then
+		if btnp(5) or btnp(4) then
             lastPlayed="player"
 			playergrid[selector.position]=die.value
 			compare_grids()
