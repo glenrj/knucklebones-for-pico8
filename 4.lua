@@ -54,14 +54,9 @@ function update_selector()
 		end
 	elseif selector.mode== "place" then
 		--place mode positions
-		xpos=playergridx
-		ypos=playergridy
-		if btnp(3) then
-			selector.position+=3
-		end
-		if btnp(2) then
-			selector.position-=3
-		end
+		xpos={56,74,92}
+		ypos={70,70,70}
+
 		if btnp(0) then
 			selector.position-=1
 		end
@@ -69,8 +64,18 @@ function update_selector()
 			selector.position+=1
 		end
 		if btnp(5) or btnp(4) then
-            lastPlayed="player"
-			playergrid[selector.position]=die.value
+            lastplayed="player"
+			if selector.position == 1 then
+				open_spots=find_match(pcol1,0)
+	            pcol1[open_spots[1]]=die.value
+			elseif selector.position == 2 then
+				open_spots=find_match(pcol2,0)
+	            pcol2[open_spots[1]]=die.value
+			elseif selector.position == 3 then
+				open_spots=find_match(pcol3,0)
+	            pcol3[open_spots[1]]=die.value
+			end
+			to_grid()
 			compare_grids()
 			if game.state == "game" then
 				cpu_mode()
@@ -89,7 +94,12 @@ end
 
 function draw_selector()
 	if selector.visible then
-		spr(selector.sprite,selector.x,selector.y,selector.w,selector.h)
+		if selector.mode == "place" then
+			spr(selector.sprite,selector.x,selector.y,selector.w,selector.h)
+			spr(selector.sprite+16,selector.x,selector.y+44,selector.w,selector.h)
+		else
+			spr(selector.sprite,selector.x,selector.y,selector.w,selector.h)
+		end
 	end
 end
 
@@ -111,10 +121,11 @@ function place_mode()
 	route="none"
 	selector.mode="place"
 	selector.w=2
-	selector.h=2
+	selector.h=1
 	selector.sprite=0
 	selector.position=1
-	selector.options=9
+	selector.options=3
+	to_col()
 end
 
 function title_mode()
