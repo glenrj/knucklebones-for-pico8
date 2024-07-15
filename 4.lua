@@ -9,7 +9,8 @@ function init_selector()
 		mode="title",
 		position=1,
 		options=0,
-		visible=false
+		visible=false,
+		cols={true,true,true}
 	}
 end
 
@@ -17,8 +18,20 @@ function update_selector()
     --menu wrap
 	if selector.position > selector.options then
 		selector.position=1
+		if selector.mode=="place" and count(pcol1,0)==0 then
+			selector.position=2
+		end
+		if selector.mode=="place" and count(pcol2,0)==0 then
+			selector.position=3
+		end
 	elseif selector.position < 1 then
 		selector.position=selector.options
+		if selector.mode=="place" and count(pcol3,0)==0 then
+			selector.position=2
+		end
+		if selector.mode=="place" and count(pcol2,0)==0 then
+			selector.position=1
+		end
 	end
 	if selector.mode == "roll" then
 		--roll mode positions
@@ -59,9 +72,15 @@ function update_selector()
 
 		if btnp(0) then
 			selector.position-=1
+			if selector.cols[selector.position] == false then
+				selector.position-=1
+			end
 		end
 		if btnp(1) then
 			selector.position+=1
+			if selector.cols[selector.position] == false then
+				selector.position+=1
+			end
 		end
 		if btnp(5) or btnp(4) then
             lastplayed="player"
@@ -97,6 +116,9 @@ function draw_selector()
 		if selector.mode == "place" then
 			spr(selector.sprite,selector.x,selector.y,selector.w,selector.h)
 			spr(selector.sprite+16,selector.x,selector.y+44,selector.w,selector.h)
+			print(selector.cols[1],0,0)
+			print(selector.cols[2])
+			print(selector.cols[3])
 		else
 			spr(selector.sprite,selector.x,selector.y,selector.w,selector.h)
 		end
@@ -126,6 +148,12 @@ function place_mode()
 	selector.position=1
 	selector.options=3
 	to_col()
+	if count(pcol1,0)==0 then
+		selector.position=2
+	end
+	if count(pcol2,0)==0 then
+		selector.position=3
+	end
 end
 
 function title_mode()

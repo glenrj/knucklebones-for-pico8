@@ -8,14 +8,14 @@ Each player has a 3x3 grid, organized into three columns. They take turns rollin
 Each column is calculated separately, then added to the player's total score. If there are matching dice in the column, their values are added together and multiplied by the amount of matching dice.
 ### PICO-8 Controls
 ⬅️⬆️➡️⬇️ Move cursor
-❎ or 🅾️ Select/To Do
-## Goals
+❎ or 🅾️ Select
+## Goals/To Do
 - [x] MVP
 - [x] Game over screen
     - [ ] code cleanup & debug - restart not working consistently
 - [x] Add second button to controls
-- [ ] Select column instead of grid spot
-- [ ] Stop player from selecting full column
+- [x] Select column instead of grid spot
+- [x] Stop player from selecting full column
 - [ ] Add SFX
 - [ ] Redo main layout
 - [ ] Add rules to game

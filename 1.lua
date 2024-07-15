@@ -118,6 +118,26 @@ function compare_grids()
 			end
 		end
 	end
+
+	if count(pcol1,0)>0 then
+		selector.cols[1]=true
+	end
+	if count(pcol2,0)>0 then
+		selector.cols[2]=true
+	end
+	if count(pcol3,0)>0 then
+		selector.cols[3]=true
+	end
+	if count(pcol1,0)==0 then
+		selector.cols[1]=false
+	end
+	if count(pcol2,0)==0 then
+		selector.cols[2]=false
+	end
+	if count(pcol3,0)==0 then
+		selector.cols[3]=false
+	end
+
 	to_grid()
 	if count(playergrid,0)==0 or count(cpugrid,0)==0 then
 		selector.visible=false
