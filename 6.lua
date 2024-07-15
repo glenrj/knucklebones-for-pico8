@@ -7,6 +7,14 @@ function init_title()
     }
 end
 
+function update_title()
+    if game.state == "title" then
+        hero.sprite=64
+    elseif game.state == "over" then
+        hero.sprite=128
+    end
+end
+
 function draw_title()
     spr(hero.sprite,10,20,hero.w,hero.h)
     if game.state == "title" then

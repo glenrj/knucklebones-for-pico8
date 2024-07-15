@@ -16,6 +16,7 @@ function _init()
 end
 
 function _update()
+	update_title()
 	scores.player=update_score(playergrid)
 	scores.cpu=update_score(cpugrid)
 	update_die()

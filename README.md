@@ -12,6 +12,7 @@ Each column is calculated separately, then added to the player's total score. If
 ## Goals
 - [x] MVP
 - [x] Game over screen
+- [ ] Add second button to controls
 - [ ] Select column instead of grid spot
 - [ ] Stop player from selecting full column
 - [ ] Add SFX
