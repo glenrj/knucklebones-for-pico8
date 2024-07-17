@@ -41,35 +41,55 @@ end
 
 function draw_board()
 	--cpu side
-	draw_grid(cpugrid,56,8,square.space)
+	draw_grid(cpugrid,58,8,square.space)
 	--divider
 	rectfill(50,64,116,65,13)
 	--player side
-	draw_grid(playergrid,56,70,square.space)
-	--menu
-	print("roll",12,80,7)
-	print("restart",12,88,7)
+	draw_grid(playergrid,58,70,square.space)
+	if game.state == "game" then
+		--menu
+		print("roll",12,80,7)
+		print("restart",12,88,7)
+	end
 end
 
 function draw_grid(grid,x,y,space)
 	sprites={}
+	xcoords={x,x+space,x+(space*2),x,x+space,x+(space*2),x,x+space,x+(space*2)}
+	ycoords={y,y,y,y+space,y+space,y+space,y+(space*2),y+(space*2),y+(space*2)}
+	newcol1={grid[1],grid[4],grid[7]}
+	newcol2={grid[2],grid[5],grid[8]}
+	newcol3={grid[3],grid[6],grid[9]}
+
 	for i=1,9 do
 		value=grid[i]
 		sprite=(value+1)*2
+		colourA=6
+		colourB=7
 		add(sprites,sprite,i)
+		--set colour based on amount per column
+		if i==1 or i==4 or i==7 then
+			colmult=count(newcol1,value)
+		elseif i==2 or i==5 or i==8 then
+			colmult=count(newcol2,value)
+		elseif i==3 or i==6 or i==9 then
+			colmult=count(newcol3,value)
+		end
+		if colmult == 2 then
+			colourA=9
+			colourB=10
+		elseif colmult == 3 then
+			colourA=3
+			colourB=11
+		end
+		--change colour palette
+		PAL(6,colourA)
+		PAL(7,colourB)
+		--draw sprite
+		spr(sprites[i],xcoords[i],ycoords[i],square.w,square.h)
+		--reset colour palette
+		PAL()
 	end
-	--row one
-	spr(sprites[1],x,y,square.w,square.h)
-	spr(sprites[2],x+space,y,square.w,square.h)
-	spr(sprites[3],x+(space*2),y,square.w,square.h)
-	--row two
-	spr(sprites[4],x,y+space,square.w,square.h)
-	spr(sprites[5],x+space,y+space,square.w,square.h)
-	spr(sprites[6],x+(space*2),y+space,square.w,square.h)
-	--row three
-	spr(sprites[7],x,y+(space*2),square.w,square.h)
-	spr(sprites[8],x+space,y+(space*2),square.w,square.h)
-	spr(sprites[9],x+(space*2),y+(space*2),square.w,square.h)
 end
 
 function compare_grids()
@@ -142,7 +162,7 @@ function compare_grids()
 	if count(playergrid,0)==0 or count(cpugrid,0)==0 then
 		selector.visible=false
 		selector.position=1
-		selector.mode="title"
+		selector.mode="over"
 		game.state="over"
 		if scores.player > scores.cpu then
 			game.winner=true

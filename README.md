@@ -16,11 +16,10 @@ Each column is calculated separately, then added to the player's total score. If
 - [x] Add second button to controls
 - [x] Select column instead of grid spot
 - [x] Stop player from selecting full column
-- [ ] Add SFX
+- [x] Change dice colour for multiples
 - [ ] Redo main layout
 - [ ] Add rules to game
-- [ ] Change dice colour for multiples
-- [ ] Fake08 compatibility
+- [ ] Add SFX
 - [ ] General code cleanup
 ### Stretch Goals
 - [ ] High Score leaderboard

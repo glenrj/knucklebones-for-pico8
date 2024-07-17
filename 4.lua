@@ -65,9 +65,20 @@ function update_selector()
 			game.state="game"
 			roll_mode()
 		end
+	elseif selector.mode == "over" then
+		xpos={0}
+		ypos={0}
+		--title/game over screen positions
+		if btnp(5) then
+			cpugrid={0,0,0,0,0,0,0,0,0}
+			playergrid={0,0,0,0,0,0,0,0,0}
+			game.winner=false
+			game.state="game"
+			title_mode()
+		end
 	elseif selector.mode== "place" then
 		--place mode positions
-		xpos={56,74,92}
+		xpos={58,76,94}
 		ypos={70,70,70}
 
 		if btnp(0) then
@@ -116,9 +127,6 @@ function draw_selector()
 		if selector.mode == "place" then
 			spr(selector.sprite,selector.x,selector.y,selector.w,selector.h)
 			spr(selector.sprite+16,selector.x,selector.y+44,selector.w,selector.h)
-			print(selector.cols[1],0,0)
-			print(selector.cols[2])
-			print(selector.cols[3])
 		else
 			spr(selector.sprite,selector.x,selector.y,selector.w,selector.h)
 		end
@@ -151,8 +159,11 @@ function place_mode()
 	if count(pcol1,0)==0 then
 		selector.position=2
 	end
-	if count(pcol2,0)==0 then
+	if count(pcol2,0)==0 and selector.position == 2 then
 		selector.position=3
+	end
+	if count(pcol3,0)==0 and selector.position == 3 then
+		selector.position=1
 	end
 end
 

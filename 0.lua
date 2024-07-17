@@ -31,7 +31,11 @@ function _draw()
 		draw_score()
 		draw_die()
 		draw_selector()
-	elseif game.state == "title" or game.state == "over" then
+	elseif game.state == "title" then
+		draw_title()
+	elseif game.state == "over" then
+		draw_board()
+		draw_score()
 		draw_title()
 	end
 end
