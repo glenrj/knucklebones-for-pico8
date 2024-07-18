@@ -36,8 +36,8 @@ function update_selector()
 
 	if selector.mode == "roll" then
 		--roll mode positions
-		xpos={8,8,8}
-		ypos={80,88,96}
+		xpos={16,10,13}
+		ypos={72,80,88}
 		if btnp(3) then
 			selector.position+=1
 		end
@@ -82,7 +82,7 @@ function update_selector()
 		end
 	elseif selector.mode== "place" then
 		--place mode positions
-		xpos={58,76,94}
+		xpos={59,77,95}
 		ypos={70,70,70}
 
 		if btnp(0) then
@@ -144,13 +144,13 @@ end
 
 function roll_mode()
 	selector.mode="roll"
+	selector.position=1
+	selector.options=3
 	selector.x=8
 	selector.y=80
 	selector.w=1
 	selector.h=1
 	selector.sprite=32
-	selector.position=1
-	selector.options=3
 	selector.visible=true
 end
 function place_mode()

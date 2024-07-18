@@ -17,10 +17,11 @@ Each column is calculated separately, then added to the player's total score. If
 - [x] Select column instead of grid spot
 - [x] Stop player from selecting full column
 - [x] Change dice colour for multiples
-- [ ] Redo main layout
+- [x] Redo main layout
 - [x] Add rules to game
 - [ ] Add SFX
 - [ ] General code cleanup
+    - [ ] Add update_score to game over so the winner is correct
 ### Stretch Goals
 - [ ] High Score leaderboard
 - [ ] Pass and Play

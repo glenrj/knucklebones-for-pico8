@@ -13,9 +13,9 @@ function init_board()
 	pcol1={}
 	pcol2={}
 	pcol3={}
-    lastPlayed="player"
+    lastplayed="player"
     --available x coordinates for selector
-	--TODO hard code/collapse
+	--todo hard code/collapse
 	playergridx={}
 	playergridy={}
 	add(playergridx,56)
@@ -41,16 +41,16 @@ end
 
 function draw_board()
 	--cpu side
-	draw_grid(cpugrid,58,8,square.space)
+	draw_grid(cpugrid,59,6,square.space)
 	--divider
-	rectfill(50,64,116,65,13)
+	rectfill(51,63,117,64,13)
 	--player side
-	draw_grid(playergrid,58,70,square.space)
+	draw_grid(playergrid,59,70,square.space)
 	if game.state == "game" then
 		--menu
-		print("roll",12,80,7)
-		print("restart",12,88,7)
-		print("rules",12,96,7)
+		print("roll",20,72,7)
+		print("restart",14,80,7)
+		print("rules",17,88,7)
 	end
 end
 
@@ -65,8 +65,8 @@ function draw_grid(grid,x,y,space)
 	for i=1,9 do
 		value=grid[i]
 		sprite=(value+1)*2
-		colourA=6
-		colourB=7
+		coloura=6
+		colourb=7
 		add(sprites,sprite,i)
 		--set colour based on amount per column
 		if i==1 or i==4 or i==7 then
@@ -77,25 +77,27 @@ function draw_grid(grid,x,y,space)
 			colmult=count(newcol3,value)
 		end
 		if colmult == 2 then
-			colourA=9
-			colourB=10
+			coloura=9
+			colourb=10
 		elseif colmult == 3 then
-			colourA=3
-			colourB=11
+			coloura=3
+			colourb=11
 		end
 		--change colour palette
-		PAL(6,colourA)
-		PAL(7,colourB)
+		pal(6,coloura)
+		pal(7,colourb)
 		--draw sprite
 		spr(sprites[i],xcoords[i],ycoords[i],square.w,square.h)
 		--reset colour palette
-		PAL()
+		pal()
 	end
 end
 
 function compare_grids()
+	scores.player=update_score(playergrid)
+	scores.cpu=update_score(cpugrid)
 	to_col()
-	if lastPlayed == "cpu" then
+	if lastplayed == "cpu" then
 		for i=1,6 do
 			if count(pcol1,i)>0 and count(ccol1,i)>0 then
 				matches=find_match(pcol1,i)
@@ -117,7 +119,7 @@ function compare_grids()
 			end
 		end
 	end
-	if lastPlayed == "player" then
+	if lastplayed == "player" then
 		for i=1,6 do
 			if count(pcol1,i)>0 and count(ccol1,i)>0 then
 				matches=find_match(ccol1,i)
@@ -165,7 +167,7 @@ function compare_grids()
 		selector.position=1
 		selector.mode="over"
 		game.state="over"
-		if scores.player > scores.cpu then
+		if scores.player >= scores.cpu then
 			game.winner=true
 		else
 			game.winner=false

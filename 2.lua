@@ -19,8 +19,8 @@ function update_score(grid)
 end
 
 function draw_score()
-	print(scores.cpu,116,46,7)
-	print(scores.player,116,76,7)
+	print(scores.cpu,116,47,7)
+	print(scores.player,116,75,7)
 end
 
 function score_col(col)

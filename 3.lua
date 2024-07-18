@@ -27,7 +27,7 @@ function update_die()
 end
 
 function draw_die()
-	spr(die.sprite,8,57,2,2)
+	spr(die.sprite,20,39,2,2)
 end
 
 function roll_die()

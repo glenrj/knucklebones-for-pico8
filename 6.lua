@@ -17,7 +17,7 @@ function update_title()
         hero.y=20
     elseif game.state == "over" then
         hero.sprite=128
-        hero.x=2
+        hero.x=6
         hero.y=20
     end
 end
@@ -28,7 +28,7 @@ function draw_title()
         print("by g𝘭𝘦𝘯 m𝘤c𝘢𝘯𝘯",10,95,7)
         print("press ❎ to start")
     elseif game.state == "over" then
-        print("❎ restart",hero.x,86,7)
+        print("❎ restart",hero.x+4,86,7)
         if game.winner then
             print("★you win!★",hero.x,76,11)
         else
@@ -39,18 +39,18 @@ end
 
 --rules screen
 function draw_rules()
-    rectfill(14,16,116,98,9)
-    rectfill(14,16,116,27,1)
-    print("Knucklebones",17,20,9)
-    print("❎",100,20)
-    --Score more points than your opponent by adding dice to your grid. If a newly placed die matches any in the opposing column, those matches are removed.
-    print("Place dice on the grid.",18,30,1)
-    print("Steal dice by matching",18,40)
+    rectfill(12,21,116,105,9)
+    rectfill(12,18,116,30,1)
+    print("knucklebones",17,22,9)
+    print("❎",107,22)
+    --score more points than your opponent by adding dice to your grid. if a newly placed die matches any in the opposing column, those matches are removed.
+    print("place dice on the grid.",16,34,1)
+    print("steal dice by matching",16,45)
     print("your opponent's columns.")
-    print("The game ends when one",18,56)
+    print("the game ends when one",16,60)
     print("player's grid is")
     print("completely full.")
-    print("Make columns with",18,78)
+    print("make columns with",16,82)
     print("doubles or triples to")
     print("multiply their value!")
 end
