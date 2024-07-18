@@ -18,7 +18,7 @@ Each column is calculated separately, then added to the player's total score. If
 - [x] Stop player from selecting full column
 - [x] Change dice colour for multiples
 - [ ] Redo main layout
-- [ ] Add rules to game
+- [x] Add rules to game
 - [ ] Add SFX
 - [ ] General code cleanup
 ### Stretch Goals

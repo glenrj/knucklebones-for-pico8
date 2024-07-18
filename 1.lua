@@ -50,6 +50,7 @@ function draw_board()
 		--menu
 		print("roll",12,80,7)
 		print("restart",12,88,7)
+		print("rules",12,96,7)
 	end
 end
 

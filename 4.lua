@@ -33,10 +33,11 @@ function update_selector()
 			selector.position=1
 		end
 	end
+
 	if selector.mode == "roll" then
 		--roll mode positions
-		xpos={8,8}
-		ypos={80,88}
+		xpos={8,8,8}
+		ypos={80,88,96}
 		if btnp(3) then
 			selector.position+=1
 		end
@@ -52,6 +53,9 @@ function update_selector()
 				cpugrid={0,0,0,0,0,0,0,0,0}
 				playergrid={0,0,0,0,0,0,0,0,0}
 				game.winner=false
+			elseif selector.position == 3 then
+				rules=true
+				popup_mode()
 			end
 		end
 	elseif selector.mode == "title" then
@@ -112,8 +116,13 @@ function update_selector()
 				cpu_turn()
 			end
 		end
+	elseif selector.mode == "popup" then
+		if btnp(5) then
+			rules=false 
+			roll_mode()
+			selector.position=3
+		end
 	end
-		
 	for i=1,selector.options do
 		if selector.position == i then
 			selector.x=xpos[i]
@@ -141,12 +150,9 @@ function roll_mode()
 	selector.h=1
 	selector.sprite=32
 	selector.position=1
-	selector.options=2
+	selector.options=3
 	selector.visible=true
-	xpos={8,8}
-	ypos={80,88}
 end
-
 function place_mode()
 	route="none"
 	selector.mode="place"
@@ -170,13 +176,18 @@ end
 function title_mode()
 	game.state="title"
 	selector.mode="title"
-	selector.options=0
+	selector.position=1
+	selector.options=1
 	selector.visible=false
 end
 
 function cpu_mode()
 	selector.visible=false
 	selector.mode="cpu"
+end
+
+function popup_mode()
+	selector.mode="popup"
 end
 
 function hide_selector()

@@ -7,6 +7,7 @@ function init_title()
         x=10,
         y=20
     }
+    rules=false
 end
 
 function update_title()
@@ -34,4 +35,22 @@ function draw_title()
             print("∧you lose∧",hero.x,76,8)
         end
     end
+end
+
+--rules screen
+function draw_rules()
+    rectfill(14,16,116,98,9)
+    rectfill(14,16,116,27,1)
+    print("Knucklebones",17,20,9)
+    print("❎",100,20)
+    --Score more points than your opponent by adding dice to your grid. If a newly placed die matches any in the opposing column, those matches are removed.
+    print("Place dice on the grid.",18,30,1)
+    print("Steal dice by matching",18,40)
+    print("your opponent's columns.")
+    print("The game ends when one",18,56)
+    print("player's grid is")
+    print("completely full.")
+    print("Make columns with",18,78)
+    print("doubles or triples to")
+    print("multiply their value!")
 end
