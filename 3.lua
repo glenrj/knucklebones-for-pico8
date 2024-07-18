@@ -27,12 +27,13 @@ function update_die()
 end
 
 function draw_die()
-	spr(die.sprite,8,57,2,2)
+	spr(die.sprite,20,39,2,2)
 end
 
 function roll_die()
 	hide_selector()
 	die.timer=0
 	die.rolling=true
+	sfx(0)
 	die.value=flr(rnd(6)) + 1
 end

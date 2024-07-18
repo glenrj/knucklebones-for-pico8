@@ -4,7 +4,8 @@
 --game loop
 function _init()
 	game={
-		state="title"
+		state="title",
+		winner=false
 	}
 	init_board()
 	init_score()
@@ -15,6 +16,7 @@ function _init()
 end
 
 function _update()
+	update_title()
 	scores.player=update_score(playergrid)
 	scores.cpu=update_score(cpugrid)
 	update_die()
@@ -25,11 +27,18 @@ end
 function _draw()
 	cls()
 	if game.state == "game" then
-		draw_board()
 		draw_score()
+		draw_board()
 		draw_die()
 		draw_selector()
+		if rules then
+			draw_rules()
+		end
 	elseif game.state == "title" then
+		draw_title()
+	elseif game.state == "over" then
+		draw_board()
+		draw_score()
 		draw_title()
 	end
 end
