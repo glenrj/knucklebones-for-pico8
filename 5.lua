@@ -104,9 +104,7 @@ function place_die(roll)
     to_grid()
     lastPlayed="cpu"
     compare_grids()
-    if game.mode=="title" then
-        return
-    else
+    if game.state=="game" then
         roll_mode()
     end
 end

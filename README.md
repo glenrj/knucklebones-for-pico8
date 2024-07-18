@@ -12,14 +12,15 @@ Each column is calculated separately, then added to the player's total score. If
 ## Goals/To Do
 - [x] MVP
 - [x] Game over screen
-    - [ ] code cleanup & debug - restart not working consistently
+    - [x] code cleanup & debug - restart not working consistently
 - [x] Add second button to controls
 - [x] Select column instead of grid spot
 - [x] Stop player from selecting full column
 - [x] Change dice colour for multiples
 - [x] Redo main layout
 - [x] Add rules to game
-- [ ] Add SFX
+- [x] Add SFX
+- [ ] Beta testers (do the rules make sense?)
 - [ ] General code cleanup
     - [x] Add update_score to game over so the winner is correct
 ### Stretch Goals

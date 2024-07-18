@@ -34,5 +34,6 @@ function roll_die()
 	hide_selector()
 	die.timer=0
 	die.rolling=true
+	sfx(0)
 	die.value=flr(rnd(6)) + 1
 end

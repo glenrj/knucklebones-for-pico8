@@ -27,8 +27,8 @@ end
 function _draw()
 	cls()
 	if game.state == "game" then
-		draw_board()
 		draw_score()
+		draw_board()
 		draw_die()
 		draw_selector()
 		if rules then

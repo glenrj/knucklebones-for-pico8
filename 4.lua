@@ -36,7 +36,7 @@ function update_selector()
 
 	if selector.mode == "roll" then
 		--roll mode positions
-		xpos={16,10,13}
+		xpos={15,9,12}
 		ypos={72,80,88}
 		if btnp(3) then
 			selector.position+=1
@@ -184,6 +184,7 @@ end
 function cpu_mode()
 	selector.visible=false
 	selector.mode="cpu"
+	selector.position=1
 end
 
 function popup_mode()

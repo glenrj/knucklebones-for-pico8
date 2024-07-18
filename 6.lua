@@ -39,18 +39,18 @@ end
 
 --rules screen
 function draw_rules()
-    rectfill(12,21,116,105,9)
+    rectfill(12,21,116,107,9)
     rectfill(12,18,116,30,1)
     print("knucklebones",17,22,9)
     print("❎",107,22)
     --score more points than your opponent by adding dice to your grid. if a newly placed die matches any in the opposing column, those matches are removed.
-    print("place dice on the grid.",16,34,1)
-    print("steal dice by matching",16,45)
+    print("place dice on the grid.",16,36,1)
+    print("steal dice by matching",16,47)
     print("your opponent's columns.")
-    print("the game ends when one",16,60)
+    print("the game ends when one",16,62)
     print("player's grid is")
     print("completely full.")
-    print("make columns with",16,82)
+    print("make columns with",16,84)
     print("doubles or triples to")
     print("multiply their value!")
 end
