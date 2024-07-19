@@ -26,9 +26,8 @@ This is a simple PICO-8 adaptation of the dice mini-game Knucklebones from _Cult
 - [x] Add rules to game
 - [x] Add SFX
 - [x] Beta testers (do the rules make sense?)
-- [ ] General code cleanup
+- [x] General code cleanup
     - [x] Add update_score to game over so the winner is correct
 ### Stretch Goals
 - [ ] High Score leaderboard
 - [ ] Pass and Play
-- [ ] Music
