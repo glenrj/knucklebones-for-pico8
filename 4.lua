@@ -15,24 +15,6 @@ function init_selector()
 end
 
 function update_selector()
-	if selector.position > selector.options then
-		selector.position=1
-		if selector.mode=="place" and count(pcol1,0)==0 then
-			selector.position=2
-		end
-		if selector.mode=="place" and count(pcol2,0)==0 then
-			selector.position=3
-		end
-	elseif selector.position < 1 then
-		selector.position=selector.options
-		if selector.mode=="place" and count(pcol3,0)==0 then
-			selector.position=2
-		end
-		if selector.mode=="place" and count(pcol2,0)==0 then
-			selector.position=1
-		end
-	end
-
 	if selector.mode == "roll" then
 		xpos={14,9,12}
 		ypos={72,88,80}
@@ -86,9 +68,15 @@ function update_selector()
 			if selector.cols[selector.position] == false then
 				selector.position-=1
 			end
+			if selector.cols[selector.position] == false then
+				selector.position-=1
+			end
 		end
 		if btnp(1) then
 			selector.position+=1
+			if selector.cols[selector.position] == false then
+				selector.position+=1
+			end
 			if selector.cols[selector.position] == false then
 				selector.position+=1
 			end
@@ -118,6 +106,20 @@ function update_selector()
 			roll_mode()
 			selector.position=3
 		end
+	end
+
+	if selector.position > selector.options then
+		selector.position=1
+		if selector.mode=="place" then
+			open_cols=find_match(selector.cols,true)
+			selector.position=open_cols[1]
+		end
+	elseif selector.position < 1 then
+		selector.position=selector.options
+		if selector.mode=="place" then
+			open_cols=find_match(selector.cols,true)
+			selector.position=open_cols[#open_cols]
+		end	
 	end
 
 	for i=1,selector.options do
