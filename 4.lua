@@ -154,7 +154,6 @@ function roll_mode()
 end
 
 function place_mode()
-	route="none"
 	selector.mode="place"
 	selector.w=2
 	selector.h=1
