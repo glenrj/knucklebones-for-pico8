@@ -4,11 +4,11 @@ function init_selector()
 		sprite=32,
 		w=1,
 		h=1,
-		x=40,
-		y=80,
+		x=14,
+		y=72,
 		mode="title",
 		position=1,
-		options=0,
+		options=1,
 		visible=false,
 		cols={true,true,true}
 	}
