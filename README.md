@@ -1,5 +1,5 @@
 # Knucklebones for PICO-8
-## PICO-8/Keyboard Controls
+## Controls
 ⬅️⬆️➡️⬇️ Move cursor ❎/X or 🅾️/Z Select
 ## Rules
 Each player has a 3x3 grid, organized into three columns. They take turns rolling a die and placing it into an open spot in their grid. If there is a matching die in their opponent's matching column, the opponent must remove all matching dice in that column. When one player's grid is full, the game is over and the player with the highest score is the winner.
@@ -11,23 +11,5 @@ This is a simple PICO-8 adaptation of the dice mini-game Knucklebones from _Cult
 - [Mastodon](https://mstdn.ca/@glenrj)
 - [Instagram](https://www.instagram.com/cloudsandbushes/)
 - [Personal website](glenmccann.com)
-- Lexaloffle BBS listing
+- [Lexaloffle BBS](https://www.lexaloffle.com/bbs/?pid=151507#p)
 - [itch.io listing](https://glenrj.itch.io/knucklebones-for-pico-8)
-
-## Goals/To Do
-- [x] MVP
-- [x] Game over screen
-    - [x] code cleanup & debug - restart not working consistently
-- [x] Add second button to controls
-- [x] Select column instead of grid spot
-- [x] Stop player from selecting full column
-- [x] Change dice colour for multiples
-- [x] Redo main layout
-- [x] Add rules to game
-- [x] Add SFX
-- [x] Beta testers (do the rules make sense?)
-- [x] General code cleanup
-    - [x] Add update_score to game over so the winner is correct
-### Stretch Goals
-- [ ] High Score leaderboard
-- [ ] Pass and Play
