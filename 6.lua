@@ -27,11 +27,6 @@ function draw_title()
     if game.state == "title" then
         print("by g𝘭𝘦𝘯 m𝘤c𝘢𝘯𝘯",10,95,7)
         print("press ❎ to start")
-        spr(33,115,117)
-        pal(6,3)
-        pal(13,11)
-        spr(33,119,119)
-        pal()
     elseif game.state == "over" then
         print("❎ restart",hero.x+4,86,7)
         if game.winner then
@@ -44,18 +39,19 @@ end
 
 --rules screen
 function draw_rules()
-    rectfill(12,21,116,107,9)
-    rectfill(12,18,116,30,1)
-    print("knucklebones",16,22,9)
-    print("🅾️",106,22)
+    rectfill(12,18,116,108,9)
+    rectfill(12,15,116,26,1)
+    print("knucklebones",16,18,9)
+    print("🅾️",106,18)
     --score more points than your opponent by adding dice to your grid. if a newly placed die matches any in the opposing column, those matches are removed.
-    print("place dice on the grid.",16,36,1)
-    print("steal dice by matching",16,47)
-    print("your opponent's columns.")
-    print("the game ends when one",16,62)
+    print("place dice on the grid.",16,32,1)
+    print("remove opponent's dice",16,42)
+    print("by placing a matching")
+    print("die in the same column.")
+    print("the game ends when one",16,64)
     print("player's grid is")
     print("completely full.")
-    print("make columns with",16,84)
+    print("make columns with",16,86)
     print("doubles or triples to")
     print("multiply their value!")
 end
