@@ -62,7 +62,7 @@ function update_selector()
 		xpos={0}
 		ypos={0}
 		--title/game over screen positions
-		if btnp(5) then
+		if btnp(5) or btnp(4) then
 			cpugrid={0,0,0,0,0,0,0,0,0}
 			playergrid={0,0,0,0,0,0,0,0,0}
 			game.winner=false
