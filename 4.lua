@@ -117,7 +117,7 @@ function update_selector()
 			end
 		end
 	elseif selector.mode == "popup" then
-		if btnp(5) then
+		if btnp(4) then
 			rules=false 
 			roll_mode()
 			selector.position=3

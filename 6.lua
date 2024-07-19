@@ -46,8 +46,8 @@ end
 function draw_rules()
     rectfill(12,21,116,107,9)
     rectfill(12,18,116,30,1)
-    print("knucklebones",17,22,9)
-    print("❎",107,22)
+    print("knucklebones",16,22,9)
+    print("🅾️",106,22)
     --score more points than your opponent by adding dice to your grid. if a newly placed die matches any in the opposing column, those matches are removed.
     print("place dice on the grid.",16,36,1)
     print("steal dice by matching",16,47)
