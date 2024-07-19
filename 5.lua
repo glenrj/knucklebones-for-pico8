@@ -40,17 +40,17 @@ function place_die(roll)
         --look for multiples and open spot
         if count(ccol1,cpu.roll)>0 and count(ccol1,0)>0 then
             open_spots=find_match(ccol1,0)
-            ccol1[open_spots[1]]=cpu.roll
+            ccol1[open_spots[#open_spots]]=cpu.roll
             cpu.turn=false
             column=1
         elseif count(ccol2,cpu.roll)>0 and count(ccol2,0)>0 then
             open_spots=find_match(ccol2,0)
-            ccol2[open_spots[1]]=cpu.roll
+            ccol2[open_spots[#open_spots]]=cpu.roll
             cpu.turn=false
             column=2
         elseif count(ccol3,cpu.roll)>0 and count(ccol3,0)>0 then
             open_spots=find_match(ccol3,0)
-            ccol3[open_spots[1]]=cpu.roll
+            ccol3[open_spots[#open_spots]]=cpu.roll
             cpu.turn=false
             column=3
         end
@@ -60,17 +60,17 @@ function place_die(roll)
         --look for match and open spot
         if count(pcol1,cpu.roll)>0 and count(ccol1,0)>0 then
             open_spots=find_match(ccol1,0)
-            ccol1[open_spots[1]]=cpu.roll
+            ccol1[open_spots[#open_spots]]=cpu.roll
             cpu.turn=false
             column=1
         elseif count(pcol2,cpu.roll)>0 and count(ccol2,0)>0 then
             open_spots=find_match(ccol2,0)
-            ccol2[open_spots[1]]=cpu.roll
+            ccol2[open_spots[#open_spots]]=cpu.roll
             cpu.turn=false
             column=2
         elseif count(pcol3,cpu.roll)>0 and count(ccol3,0)>0 then
             open_spots=find_match(ccol3,0)
-            ccol3[open_spots[1]]=cpu.roll
+            ccol3[open_spots[#open_spots]]=cpu.roll
             cpu.turn=false
             column=3
         end
@@ -86,17 +86,17 @@ function place_die(roll)
         --first open spot in respective column
         if random <4 and count(ccol1,0)>0 then
             zeroes=find_match(ccol1,0)
-            ccol1[zeroes[1]]=cpu.roll
+            ccol1[zeroes[#zeroes]]=cpu.roll
             cpu.turn=false
             column=1
         elseif random <7 and count(ccol2,0)>0 then
             zeroes=find_match(ccol2,0)
-            ccol2[zeroes[1]]=cpu.roll
+            ccol2[zeroes[#zeroes]]=cpu.roll
             cpu.turn=false
             column=2
         elseif random <10 and count(ccol3,0)>0 then
             zeroes=find_match(ccol3,0)
-            ccol3[zeroes[1]]=cpu.roll
+            ccol3[zeroes[#zeroes]]=cpu.roll
             cpu.turn=false
             column=2
         end

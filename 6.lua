@@ -27,6 +27,11 @@ function draw_title()
     if game.state == "title" then
         print("by g𝘭𝘦𝘯 m𝘤c𝘢𝘯𝘯",10,95,7)
         print("press ❎ to start")
+        spr(33,115,117)
+        pal(6,3)
+        pal(13,11)
+        spr(33,119,119)
+        pal()
     elseif game.state == "over" then
         print("❎ restart",hero.x+4,86,7)
         if game.winner then
