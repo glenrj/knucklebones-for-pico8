@@ -15,7 +15,6 @@ function init_selector()
 end
 
 function update_selector()
-    --menu wrap
 	if selector.position > selector.options then
 		selector.position=1
 		if selector.mode=="place" and count(pcol1,0)==0 then
@@ -35,18 +34,18 @@ function update_selector()
 	end
 
 	if selector.mode == "roll" then
-		--roll mode positions
-		xpos={15,9,12}
-		ypos={72,80,88}
+		xpos={14,9,12}
+		ypos={72,88,80}
 		if btnp(3) then
-			selector.position+=1
+			selector.position-=1
 		end
 		if btnp(2) then
-			selector.position-=1
+			selector.position+=1
 		end
 		if btnp(5) or btnp(4) then
 			if selector.position == 1 then
 				roll_die()
+				to_col()
 				place_mode()
 			elseif selector.position == 2 then
 				title_mode()
@@ -61,7 +60,6 @@ function update_selector()
 	elseif selector.mode == "title" then
 		xpos={0}
 		ypos={0}
-		--title/game over screen positions
 		if btnp(5) or btnp(4) then
 			cpugrid={0,0,0,0,0,0,0,0,0}
 			playergrid={0,0,0,0,0,0,0,0,0}
@@ -72,7 +70,6 @@ function update_selector()
 	elseif selector.mode == "over" then
 		xpos={0}
 		ypos={0}
-		--title/game over screen positions
 		if btnp(5) then
 			cpugrid={0,0,0,0,0,0,0,0,0}
 			playergrid={0,0,0,0,0,0,0,0,0}
@@ -81,7 +78,6 @@ function update_selector()
 			title_mode()
 		end
 	elseif selector.mode== "place" then
-		--place mode positions
 		xpos={59,77,95}
 		ypos={70,70,70}
 
@@ -123,6 +119,7 @@ function update_selector()
 			selector.position=3
 		end
 	end
+
 	for i=1,selector.options do
 		if selector.position == i then
 			selector.x=xpos[i]
@@ -153,6 +150,7 @@ function roll_mode()
 	selector.sprite=32
 	selector.visible=true
 end
+
 function place_mode()
 	route="none"
 	selector.mode="place"

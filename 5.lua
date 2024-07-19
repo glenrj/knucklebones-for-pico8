@@ -36,8 +36,6 @@ function place_die(roll)
     to_col()
     if count(cpugrid,cpu.roll)>0 then
         route="cpu match"
-        --if it is in the cpu's grid
-        --look for multiples and open spot
         if count(ccol1,cpu.roll)>0 and count(ccol1,0)>0 then
             open_spots=find_match(ccol1,0)
             ccol1[open_spots[#open_spots]]=cpu.roll
@@ -55,9 +53,7 @@ function place_die(roll)
             column=3
         end
     elseif count(playergrid,cpu.roll)>0 then
-        --if it's in the player's grid
         route="player match"
-        --look for match and open spot
         if count(pcol1,cpu.roll)>0 and count(ccol1,0)>0 then
             open_spots=find_match(ccol1,0)
             ccol1[open_spots[#open_spots]]=cpu.roll
@@ -76,14 +72,12 @@ function place_die(roll)
         end
     end
     if cpu.turn and count(cpugrid,0)>0 then
-        --random 0 in cpugrid
         route="no match"
         open_spots=find_match(cpugrid,0)
         random=rnd(#open_spots)
         if random == 0 then
             random=1
         end
-        --first open spot in respective column
         if random <4 and count(ccol1,0)>0 then
             zeroes=find_match(ccol1,0)
             ccol1[zeroes[#zeroes]]=cpu.roll

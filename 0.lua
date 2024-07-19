@@ -1,7 +1,6 @@
 --knucklebones
 --glen mccann
 
---game loop
 function _init()
 	game={
 		state="title",

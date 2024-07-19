@@ -14,43 +14,18 @@ function init_board()
 	pcol2={}
 	pcol3={}
     lastplayed="player"
-    --available x coordinates for selector
-	--todo hard code/collapse
-	playergridx={}
-	playergridy={}
-	add(playergridx,56)
-	add(playergridx,56+square.space)
-	add(playergridx,56+(square.space*2))
-	add(playergridx,56)
-	add(playergridx,56+square.space)
-    add(playergridx,56+(square.space*2))
-	add(playergridx,56)
-	add(playergridx,56+square.space)
-    add(playergridx,56+(square.space*2))
-    --available y coordinates for selector
-	add(playergridy,70)
-	add(playergridy,70)
-	add(playergridy,70)
-	add(playergridy,70+square.space)
-	add(playergridy,70+square.space)
-	add(playergridy,70+square.space)
-	add(playergridy,70+(square.space*2))
-	add(playergridy,70+(square.space*2))
-	add(playergridy,70+(square.space*2))
+	playergridx={56,56+square.space,56+(square.space*2),56,56+square.space,56+(square.space*2),56,56+square.space,56+(square.space*2)}
+	playergridy={70,70,70,70+square.space,70+square.space,70+square.space,70+(square.space*2),70+(square.space*2),70+(square.space*2)}
 end
 
 function draw_board()
-	--cpu side
 	draw_grid(cpugrid,59,6,square.space)
-	--divider
 	rectfill(51,63,117,64,13)
-	--player side
 	draw_grid(playergrid,59,70,square.space)
 	if game.state == "game" then
-		--menu
-		print("roll",20,72,7)
-		print("restart",14,80,7)
-		print("rules",17,88,7)
+		print("roll",19,72,7)
+		print("rules",17,80,7)
+		print("restart",14,88,7)
 	end
 end
 
@@ -61,14 +36,12 @@ function draw_grid(grid,x,y,space)
 	newcol1={grid[1],grid[4],grid[7]}
 	newcol2={grid[2],grid[5],grid[8]}
 	newcol3={grid[3],grid[6],grid[9]}
-
 	for i=1,9 do
 		value=grid[i]
 		sprite=(value+1)*2
 		coloura=6
 		colourb=7
 		add(sprites,sprite,i)
-		--set colour based on amount per column
 		if i==1 or i==4 or i==7 then
 			colmult=count(newcol1,value)
 		elseif i==2 or i==5 or i==8 then
@@ -83,12 +56,10 @@ function draw_grid(grid,x,y,space)
 			coloura=3
 			colourb=11
 		end
-		--change colour palette
 		pal(6,coloura)
 		pal(7,colourb)
-		--draw sprite
+
 		spr(sprites[i],xcoords[i],ycoords[i],square.w,square.h)
-		--reset colour palette
 		pal()
 	end
 end
@@ -141,7 +112,6 @@ function compare_grids()
 			end
 		end
 	end
-
 	if count(pcol1,0)>0 then
 		selector.cols[1]=true
 	end
@@ -160,7 +130,6 @@ function compare_grids()
 	if count(pcol3,0)==0 then
 		selector.cols[3]=false
 	end
-
 	to_grid()
 	if count(playergrid,0)==0 or count(cpugrid,0)==0 then
 		selector.mode="over"
