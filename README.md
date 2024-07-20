@@ -12,4 +12,4 @@ This is a simple PICO-8 adaptation of the dice mini-game Knucklebones from _Cult
 - [Instagram](https://www.instagram.com/cloudsandbushes/)
 - [Personal website](glenmccann.com)
 - [Lexaloffle BBS](https://www.lexaloffle.com/bbs/?pid=151507#p)
-- [itch.io listing](https://glenrj.itch.io/knucklebones-for-pico-8)
+- [itch.io](https://glenrj.itch.io/knucklebones-for-pico-8)
