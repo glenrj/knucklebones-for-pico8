@@ -33,6 +33,7 @@ function update_selector()
 				title_mode()
 				cpugrid={0,0,0,0,0,0,0,0,0}
 				playergrid={0,0,0,0,0,0,0,0,0}
+				selector.col={true,true,true}
 				game.winner=false
 			elseif selector.position == 3 then
 				rules=true
@@ -55,6 +56,7 @@ function update_selector()
 		if btnp(5) then
 			cpugrid={0,0,0,0,0,0,0,0,0}
 			playergrid={0,0,0,0,0,0,0,0,0}
+			selector.cols={true,true,true}
 			game.winner=false
 			game.state="game"
 			title_mode()
