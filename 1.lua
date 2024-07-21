@@ -132,6 +132,8 @@ function compare_grids()
 	end
 	to_grid()
 	if count(playergrid,0)==0 or count(cpugrid,0)==0 then
+		scores.player=update_score(playergrid)
+		scores.cpu=update_score(cpugrid)
 		selector.mode="over"
 		game.state="over"
 		selector.visible=false
