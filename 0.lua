@@ -4,7 +4,7 @@
 function _init()
 	game={
 		state="title",
-		winner=false
+		winner=""
 	}
 	init_board()
 	init_score()

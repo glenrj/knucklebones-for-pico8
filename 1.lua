@@ -23,9 +23,20 @@ function draw_board()
 	rectfill(51,63,117,64,13)
 	draw_grid(playergrid,59,70,square.space)
 	if game.state == "game" then
-		print("roll",19,72,7)
-		print("rules",17,80,7)
-		print("restart",14,88,7)
+		rect(9,9,34,33,5)
+		print("roll",13,12,5)
+		print("place",13,19)
+		print("cpu",13,26)
+		if selector.mode == "roll" then
+			print("roll",13,12,9)
+		elseif selector.mode == "place" then
+			print("place",13,19,12)
+		elseif selector.mode == "cpu" then
+			print("cpu",13,26,8)
+		end
+		print("roll",19,86,7)
+		print("rules",17,94,7)
+		print("restart",14,102,7)
 	end
 end
 
@@ -132,15 +143,19 @@ function compare_grids()
 	end
 	to_grid()
 	if count(playergrid,0)==0 or count(cpugrid,0)==0 then
+		scores.player=update_score(playergrid)
+		scores.cpu=update_score(cpugrid)
 		selector.mode="over"
 		game.state="over"
 		selector.visible=false
 		selector.position=1
 		selector.options=1
 		if scores.player >= scores.cpu then
-			game.winner=true
+			game.winner="player"
+		elseif scores.player == scores.cpu then
+			game.winner="tie"
 		else
-			game.winner=false
+			game.winner="cpu"
 		end
 	end
 end
