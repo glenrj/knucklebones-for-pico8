@@ -17,7 +17,7 @@ end
 function update_selector()
 	if selector.mode == "roll" then
 		xpos={14,9,12}
-		ypos={72,88,80}
+		ypos={86,102,94}
 		if btnp(3) then
 			selector.position-=1
 		end
@@ -34,7 +34,7 @@ function update_selector()
 				cpugrid={0,0,0,0,0,0,0,0,0}
 				playergrid={0,0,0,0,0,0,0,0,0}
 				selector.col={true,true,true}
-				game.winner=false
+				game.winner=""
 			elseif selector.position == 3 then
 				rules=true
 				popup_mode()
@@ -46,7 +46,7 @@ function update_selector()
 		if btnp(5) or btnp(4) then
 			cpugrid={0,0,0,0,0,0,0,0,0}
 			playergrid={0,0,0,0,0,0,0,0,0}
-			game.winner=false
+			game.winner=""
 			game.state="game"
 			roll_mode()
 		end
@@ -57,7 +57,7 @@ function update_selector()
 			cpugrid={0,0,0,0,0,0,0,0,0}
 			playergrid={0,0,0,0,0,0,0,0,0}
 			selector.cols={true,true,true}
-			game.winner=false
+			game.winner=""
 			game.state="game"
 			title_mode()
 		end

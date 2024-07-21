@@ -29,10 +29,12 @@ function draw_title()
         print("press ❎ to start")
     elseif game.state == "over" then
         print("❎ restart",hero.x+4,86,7)
-        if game.winner then
+        if game.winner == "player" then
             print("★you win!★",hero.x,76,11)
-        else
+        elseif game.winner == "cpu" then
             print("∧you lose∧",hero.x,76,8)
+        elseif game.winner=="tie" then
+            print("✽tie game✽",hero.x,76,11)
         end
     end
 end

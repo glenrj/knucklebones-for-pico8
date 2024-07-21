@@ -15,8 +15,8 @@ This is a PICO-8 adaptation of the dice mini-game Knucklebones from _Cult of the
 - [Lexaloffle BBS](https://www.lexaloffle.com/bbs/?pid=151507#p)
 - [itch.io](https://glenrj.itch.io/knucklebones-for-pico-8)
 ### Stretch Goals
-- [ ] Handle ties better
+- [x] Handle ties better
 - [ ] Stats page
 - [ ] Coin flip to determine starting player
-- [ ] Indicator for whose turn it is
+- [x] Indicator for whose turn it is
 - [ ] Pass and Play
