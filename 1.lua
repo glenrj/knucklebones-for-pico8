@@ -150,7 +150,7 @@ function compare_grids()
 		selector.visible=false
 		selector.position=1
 		selector.options=1
-		if scores.player >= scores.cpu then
+		if scores.player > scores.cpu then
 			game.winner="player"
 		elseif scores.player == scores.cpu then
 			game.winner="tie"
